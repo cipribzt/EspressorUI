@@ -1,0 +1,13 @@
+C:\Users\Ciprian\source\repos\EspressorUI\EspressorUI\bin\Debug\netcoreapp3.1\EspressorUI.exe
+C:\Users\Ciprian\source\repos\EspressorUI\EspressorUI\bin\Debug\netcoreapp3.1\EspressorUI.deps.json
+C:\Users\Ciprian\source\repos\EspressorUI\EspressorUI\bin\Debug\netcoreapp3.1\EspressorUI.runtimeconfig.json
+C:\Users\Ciprian\source\repos\EspressorUI\EspressorUI\bin\Debug\netcoreapp3.1\EspressorUI.runtimeconfig.dev.json
+C:\Users\Ciprian\source\repos\EspressorUI\EspressorUI\bin\Debug\netcoreapp3.1\EspressorUI.dll
+C:\Users\Ciprian\source\repos\EspressorUI\EspressorUI\bin\Debug\netcoreapp3.1\EspressorUI.pdb
+C:\Users\Ciprian\source\repos\EspressorUI\EspressorUI\obj\Debug\netcoreapp3.1\EspressorUI.csprojAssemblyReference.cache
+C:\Users\Ciprian\source\repos\EspressorUI\EspressorUI\obj\Debug\netcoreapp3.1\EspressorUI.AssemblyInfoInputs.cache
+C:\Users\Ciprian\source\repos\EspressorUI\EspressorUI\obj\Debug\netcoreapp3.1\EspressorUI.AssemblyInfo.cs
+C:\Users\Ciprian\source\repos\EspressorUI\EspressorUI\obj\Debug\netcoreapp3.1\EspressorUI.csproj.CoreCompileInputs.cache
+C:\Users\Ciprian\source\repos\EspressorUI\EspressorUI\obj\Debug\netcoreapp3.1\EspressorUI.dll
+C:\Users\Ciprian\source\repos\EspressorUI\EspressorUI\obj\Debug\netcoreapp3.1\EspressorUI.pdb
+C:\Users\Ciprian\source\repos\EspressorUI\EspressorUI\obj\Debug\netcoreapp3.1\EspressorUI.genruntimeconfig.cache
