@@ -37,13 +37,17 @@ namespace EspressorUI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             Espressor espressor = new Espressor();
             string raspuns;
             Stari stare = Stari.Stare_initiala;
             while(true)
             {
+                Console.WriteLine("----------------------------------------\n");
+                Console.WriteLine("----------------------------------------\n");
+                Console.WriteLine("----------------------------------------\n");
                 Console.WriteLine(espressor);
+                Console.WriteLine("----------------------------------------\n");
+
                 switch (stare)
                 {
                     case Stari.Stare_initiala:
