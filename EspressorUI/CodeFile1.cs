@@ -83,7 +83,7 @@ namespace Espressorlibrary
             waterLevel = 0,
             waterTemperature = 0
         };
-        string indicatorLight="yellow";
+        string indicatorLight="Green";
         int coffeegrams = 0;
         int pressure = 1;
         Dictionary<State, List<Transition>> transitionMap;
@@ -115,14 +115,20 @@ namespace Espressorlibrary
         {
             return boiler.waterTemperature;
         }
-        public int SetWaterTemperature(int temperaturaDorita)
+        public int SetWaterTemperature(int newTemperature)
         {
-            boiler.waterTemperature = temperaturaDorita;
+            if(newTemperature <=90 &&  newTemperature>=60)
+                boiler.waterTemperature = newTemperature;
+            else
+            {
+                boiler.waterTemperature = 20;
+                Console.WriteLine("Please enter a value between 60 and 90! ");
+            }
             return boiler.waterTemperature;
         }
-        public void AddCoffee(int coffeegramsAdaugate)
+        public void AddCoffee(int newCoffeeGrams)
         {
-            coffeegrams = coffeegrams + coffeegramsAdaugate;
+            coffeegrams = newCoffeeGrams;
         }
         public void RemoveCoffee()
         {
@@ -154,13 +160,13 @@ namespace Espressorlibrary
         {
             return pot.potInside;
         }
-        public void SetPressure(int pressureDorita)
+        public void SetPressure(int newPressure)
         {
-            if (pressureDorita >= 9 && pressureDorita <= 14)
-                pressure = pressureDorita;
+            if (newPressure >= 8 && newPressure <= 11)
+                pressure = newPressure;
             else
             {
-                Console.WriteLine("Va rugam sa introduceti o valoare intre 9 si 14");
+                Console.WriteLine("Please enter a value between 8 and 11");
                 pressure = 0;
             }
         }
@@ -188,6 +194,7 @@ namespace Espressorlibrary
             mesaj += "Temperature of Water: " + ReadWaterTemperature().ToString() + " Celsius degrees\n";
             mesaj += "Coffee Mass: " + GetCoffeeMass().ToString() + " grams\n";
             mesaj += "Pressure: " + ReadPressure().ToString() + " bar\n";
+            mesaj += "Indicator Light: " + indicatorLight;
 
             return mesaj;
         }
@@ -195,12 +202,14 @@ namespace Espressorlibrary
         {
             boiler.waterLevel -= 2;
             plate.potMass += 5;
+            indicatorLight = "Red";
         }
 
         public void Stop()
         {
             boiler.waterLevel -= 1;
             plate.potMass += 2;
+            indicatorLight = "Green";
         }
 
         public void New()
@@ -241,12 +250,35 @@ namespace Espressorlibrary
 
         public void ExecuteCommand (string commandFromLine, ref State currentState)
         {
-            if (commandFromLine == Action.AddCoffee.ToString()) AddCoffee(18);         
-            if (commandFromLine == Action.HeatWater.ToString()) SetWaterTemperature(70);
+            string message = "Enter a value: ";
+            string valueFromCommand;
+            if (commandFromLine == Action.AddCoffee.ToString())
+            {
+                Console.Write(message);
+                valueFromCommand = Console.ReadLine();
+                AddCoffee(Convert.ToInt32(valueFromCommand));
+            }
+            if (commandFromLine == Action.HeatWater.ToString())
+            {
+                do
+                {
+                    Console.Write(message);
+                    valueFromCommand = Console.ReadLine();
+                    SetWaterTemperature(Convert.ToInt32(valueFromCommand));
+                } while (ReadWaterTemperature()==20);
+            }
             if (commandFromLine == Action.RemovePot.ToString()) RemovePot();
             if (commandFromLine == Action.AddWater.ToString()) AddWater();           
             if (commandFromLine == Action.RemoveCoffee.ToString()) RemoveCoffee();
-            if (commandFromLine == Action.SetPressure.ToString()) SetPressure(10);
+            if (commandFromLine == Action.SetPressure.ToString())
+            {
+                do
+                {
+                    Console.Write(message);
+                    valueFromCommand = Console.ReadLine();
+                    SetPressure(Convert.ToInt32(valueFromCommand));
+                } while (ReadPressure() == 0);
+            }
             if (commandFromLine == Action.PreheatPot.ToString()) PreheatPot(40);
             if (commandFromLine == Action.AddPot.ToString()) AddPot();
             if (commandFromLine == Action.Start.ToString()) Start();

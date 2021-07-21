@@ -12,6 +12,7 @@ namespace EspressorUI
             Espressor espressor = new Espressor();
             string commandFromLine;
             string message = "Available commands: ";
+            string requestCommand = "Enter your command: ";
             State currentState = State.Initial_state;
 
             while (true)
@@ -23,6 +24,8 @@ namespace EspressorUI
                 Console.WriteLine("----------------------------------------\n");
                 Console.WriteLine(message);
                 espressor.PrintAvailableAction(currentState);
+                Console.WriteLine("\n");
+                Console.Write(requestCommand);
                 commandFromLine = Console.ReadLine();
                 if (espressor.IsTheCommandPossible(currentState, commandFromLine))
                 {
