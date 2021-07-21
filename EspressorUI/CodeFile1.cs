@@ -51,10 +51,6 @@ namespace Espressorlibrary
     class Pot
     {
         public bool potInside { get; set; }
-        public bool GetPotPosition()
-        {
-            return potInside;
-        }
     }
 
     class Plate
@@ -84,7 +80,7 @@ namespace Espressorlibrary
             waterTemperature = 0
         };
         string indicatorLight="Green";
-        int coffeegrams = 0;
+        int coffeeGrams = 0;
         int pressure = 1;
         Dictionary<State, List<Transition>> transitionMap;
         public Espressor()
@@ -128,22 +124,22 @@ namespace Espressorlibrary
         }
         public void AddCoffee(int newCoffeeGrams)
         {
-            coffeegrams = newCoffeeGrams;
+            coffeeGrams = newCoffeeGrams;
         }
         public void RemoveCoffee()
         {
-            coffeegrams = 0;
+            coffeeGrams = 0;
         }
         public int GetCoffeeMass()
         {
-            return coffeegrams;
+            return coffeeGrams;
         }
         public int GetPotMass()
         {
             if (!IsPot()) return 0;
             return plate.potMass;
         }
-        public int PotTemperature()
+        public int GetPotTemperature()
         {
             if (!IsPot()) return 0;
             return plate.potTemperature;
@@ -189,7 +185,7 @@ namespace Espressorlibrary
                 mesaj = "Pot in position\n";
             else mesaj = "Pot not in position\n";
             mesaj += "Pot mass: " + GetPotMass().ToString() + " grams\n";
-            mesaj += "Pot Temperature: " + PotTemperature().ToString() + " Celsius degrees\n";
+            mesaj += "Pot Temperature: " + GetPotTemperature().ToString() + " Celsius degrees\n";
             mesaj += "Level of Water: " + ReadWaterLevel().ToString() + "%\n";
             mesaj += "Temperature of Water: " + ReadWaterTemperature().ToString() + " Celsius degrees\n";
             mesaj += "Coffee Mass: " + GetCoffeeMass().ToString() + " grams\n";
