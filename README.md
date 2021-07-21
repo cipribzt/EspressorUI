@@ -2,7 +2,7 @@
 
 # General Description
 
-The Espressor works as a state machine with 26 states and 11 possible actions to navigate through states. TO BE INSERTED - SCREENSHOT WITH TABEL
+The Espressor works as a state machine with 26 states and 11 possible actions to navigate through states.
 
 The application receives commands from the user via the console to prepare Espresso. The classes for this aplication are Pot, Plate, Boiler and Espressor. 
 
