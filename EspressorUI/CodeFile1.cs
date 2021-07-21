@@ -88,6 +88,7 @@ namespace Espressorlibrary
             transitionMap= new Dictionary<State, List<Transition>>();
             FillTransitionMap(transitionMap);
         }
+
         struct Transition
         {
             public Action Action { get; set; }
@@ -98,19 +99,23 @@ namespace Espressorlibrary
                 To = To1;
             }
         }
+
         public void AddWater()
         {
             boiler.waterLevel = 100;
             boiler.waterTemperature = 25;
         }
+
         public int ReadWaterLevel()
         {
             return boiler.waterLevel;
         }
+
         public int ReadWaterTemperature()
         {
             return boiler.waterTemperature;
         }
+
         public int SetWaterTemperature(int newTemperature)
         {
             if(newTemperature <=90 &&  newTemperature>=60)
@@ -122,40 +127,49 @@ namespace Espressorlibrary
             }
             return boiler.waterTemperature;
         }
+
         public void AddCoffee(int newCoffeeGrams)
         {
             coffeeGrams = newCoffeeGrams;
         }
+
         public void RemoveCoffee()
         {
             coffeeGrams = 0;
         }
+
         public int GetCoffeeMass()
         {
             return coffeeGrams;
         }
+
         public int GetPotMass()
         {
             if (!IsPot()) return 0;
             return plate.potMass;
         }
+
         public int GetPotTemperature()
         {
             if (!IsPot()) return 0;
             return plate.potTemperature;
         }
+
         public void PreheatPot(int temperatura)
         {
             plate.potTemperature = temperatura;
         }
+
         public void EmptyPot()
         {
             plate.potMass = 0;
         }
+
         public bool IsPot()
         {
             return pot.potInside;
         }
+
         public void SetPressure(int newPressure)
         {
             if (newPressure >= 8 && newPressure <= 11)
@@ -166,18 +180,22 @@ namespace Espressorlibrary
                 pressure = 0;
             }
         }
+
         public int ReadPressure()
         {
             return pressure;
         }
+
         public void AddPot()
         {
             pot.potInside=true;
         }
+
         public void RemovePot()
         {
             pot.potInside=false;
         }
+
         public override string ToString()
         {
             string mesaj;
@@ -194,10 +212,11 @@ namespace Espressorlibrary
 
             return mesaj;
         }
+
         public void Start()
         {
             boiler.waterLevel -= 2;
-            plate.potMass += 5;
+            plate.potMass += 10;
             indicatorLight = "Red";
         }
 
@@ -220,6 +239,7 @@ namespace Espressorlibrary
             for (int i=0; i < transitionMap[currentState].Count; i++)           
                 Console.WriteLine(transitionMap[currentState][i].Action);
         }
+
         public State GetNextState(State currentState, string commandFromLine)
         {
             for (int i = 0; i < transitionMap[currentState].Count; i++)
@@ -232,6 +252,7 @@ namespace Espressorlibrary
             }
             return currentState;
         }
+
         public bool IsTheCommandPossible(State currentState, string commandFromLine)
         {
             for (int i = 0; i < transitionMap[currentState].Count; i++)
