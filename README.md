@@ -8,8 +8,7 @@ The application receives commands from the user via the console to prepare Espre
 
 ![alt text](https://github.com/cipribzt/EspressorUI/blob/master/Class%20Diagram.jpg)
 
-Espressor contains a map of that has as key the current state, and as value a list with the possible actions from that state and their destination states. FillTransitionMap()
-fills the map with the necesary data for each state. 
+
 
 
 # How to install
