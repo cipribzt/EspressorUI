@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Espressorlibrary
+
+namespace EspressorUI
 {
     public enum State
     {
@@ -47,25 +48,7 @@ namespace Espressorlibrary
         New,
         Continue
     }
- 
-    class Pot
-    {
-        public bool potInside { get; set; }
-    }
-
-    class Plate
-    {
-        public int potMass { get; set; }
-        public int potTemperature { get; set; }
-
-    }
-    class Boiler
-    {
-        public int waterLevel { get; set; }
-        public int waterTemperature { get; set; }
-
-
-    }
+  
     public class Espressor
     {
         Pot pot = new Pot { potInside = false };
@@ -80,19 +63,21 @@ namespace Espressorlibrary
             waterTemperature = 0
         };
         string indicatorLight="Green";
-        int coffeeGrams = 0;
-        int pressure = 1;
+        public int coffeeGrams { get; set; }
+        public int pressure { get; set; }
         Dictionary<State, List<Transition>> transitionMap;
         public Espressor()
         {
             transitionMap= new Dictionary<State, List<Transition>>();
             FillTransitionMap(transitionMap);
+            coffeeGrams = 0;
+            pressure = 1;
         }
 
         struct Transition
         {
-            public Action Action { get; set; }
-            public State To { get; set; }
+           public Action Action { get; set; }
+           public State To { get; set; }
            public Transition(Action Action1, State To1)
             {
                 Action = Action1;
@@ -104,16 +89,6 @@ namespace Espressorlibrary
         {
             boiler.waterLevel = 100;
             boiler.waterTemperature = 25;
-        }
-
-        public int ReadWaterLevel()
-        {
-            return boiler.waterLevel;
-        }
-
-        public int ReadWaterTemperature()
-        {
-            return boiler.waterTemperature;
         }
 
         public int SetWaterTemperature(int newTemperature)
@@ -138,20 +113,15 @@ namespace Espressorlibrary
             coffeeGrams = 0;
         }
 
-        public int GetCoffeeMass()
-        {
-            return coffeeGrams;
-        }
-
         public int GetPotMass()
         {
-            if (!IsPot()) return 0;
+            if (!pot.potInside) return 0;
             return plate.potMass;
         }
 
         public int GetPotTemperature()
         {
-            if (!IsPot()) return 0;
+            if (pot.potInside) return 0;
             return plate.potTemperature;
         }
 
@@ -165,11 +135,6 @@ namespace Espressorlibrary
             plate.potMass = 0;
         }
 
-        public bool IsPot()
-        {
-            return pot.potInside;
-        }
-
         public void SetPressure(int newPressure)
         {
             if (newPressure >= 8 && newPressure <= 11)
@@ -179,11 +144,6 @@ namespace Espressorlibrary
                 Console.WriteLine("Please enter a value between 8 and 11");
                 pressure = 0;
             }
-        }
-
-        public int ReadPressure()
-        {
-            return pressure;
         }
 
         public void AddPot()
@@ -199,15 +159,15 @@ namespace Espressorlibrary
         public override string ToString()
         {
             string mesaj;
-            if (IsPot())
+            if (pot.potInside)
                 mesaj = "Pot in position\n";
             else mesaj = "Pot not in position\n";
             mesaj += "Pot mass: " + GetPotMass().ToString() + " grams\n";
             mesaj += "Pot Temperature: " + GetPotTemperature().ToString() + " Celsius degrees\n";
-            mesaj += "Level of Water: " + ReadWaterLevel().ToString() + "%\n";
-            mesaj += "Temperature of Water: " + ReadWaterTemperature().ToString() + " Celsius degrees\n";
-            mesaj += "Coffee Mass: " + GetCoffeeMass().ToString() + " grams\n";
-            mesaj += "Pressure: " + ReadPressure().ToString() + " bar\n";
+            mesaj += "Level of Water: " + boiler.waterLevel.ToString() + "%\n";
+            mesaj += "Temperature of Water: " + boiler.waterTemperature.ToString() + " Celsius degrees\n";
+            mesaj += "Coffee Mass: " + coffeeGrams.ToString() + " grams\n";
+            mesaj += "Pressure: " + pressure.ToString() + " bar\n";
             mesaj += "Indicator Light: " + indicatorLight;
 
             return mesaj;
@@ -236,8 +196,10 @@ namespace Espressorlibrary
 
         public void PrintAvailableAction(State currentState)
         {
-            for (int i=0; i < transitionMap[currentState].Count; i++)           
+            for (int i = 0; i < transitionMap[currentState].Count; i++)
+            {
                 Console.WriteLine(transitionMap[currentState][i].Action);
+            }
         }
 
         public State GetNextState(State currentState, string commandFromLine)
@@ -282,7 +244,7 @@ namespace Espressorlibrary
                     Console.Write(message);
                     valueFromCommand = Console.ReadLine();
                     SetWaterTemperature(Convert.ToInt32(valueFromCommand));
-                } while (ReadWaterTemperature()==20);
+                } while (boiler.waterTemperature==20);
             }
             if (commandFromLine == Action.RemovePot.ToString()) RemovePot();
             if (commandFromLine == Action.AddWater.ToString()) AddWater();           
@@ -294,7 +256,7 @@ namespace Espressorlibrary
                     Console.Write(message);
                     valueFromCommand = Console.ReadLine();
                     SetPressure(Convert.ToInt32(valueFromCommand));
-                } while (ReadPressure() == 0);
+                } while (pressure == 0);
             }
             if (commandFromLine == Action.PreheatPot.ToString()) PreheatPot(40);
             if (commandFromLine == Action.AddPot.ToString()) AddPot();
@@ -304,7 +266,7 @@ namespace Espressorlibrary
             if (commandFromLine == Action.New.ToString())
             {
                 New();
-                if(ReadWaterLevel()<20)
+                if(boiler.waterLevel<20)
                 {
                     SetPressure(0);
                     currentState = State.Initial_state;
