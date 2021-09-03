@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ciprian\\source\\repos\\EspressorUI\\EspressorUI\\EspressorUI.csproj": {}
+    "C:\\Users\\Ciprian\\source\\repos\\CodeFormatter\\EspressorUI\\EspressorUI\\EspressorUI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ciprian\\source\\repos\\EspressorUI\\EspressorUI\\EspressorUI.csproj": {
+    "C:\\Users\\Ciprian\\source\\repos\\CodeFormatter\\EspressorUI\\EspressorUI\\EspressorUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ciprian\\source\\repos\\EspressorUI\\EspressorUI\\EspressorUI.csproj",
+        "projectUniqueName": "C:\\Users\\Ciprian\\source\\repos\\CodeFormatter\\EspressorUI\\EspressorUI\\EspressorUI.csproj",
         "projectName": "EspressorUI",
-        "projectPath": "C:\\Users\\Ciprian\\source\\repos\\EspressorUI\\EspressorUI\\EspressorUI.csproj",
+        "projectPath": "C:\\Users\\Ciprian\\source\\repos\\CodeFormatter\\EspressorUI\\EspressorUI\\EspressorUI.csproj",
         "packagesPath": "C:\\Users\\Ciprian\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ciprian\\source\\repos\\EspressorUI\\EspressorUI\\obj\\",
+        "outputPath": "C:\\Users\\Ciprian\\source\\repos\\CodeFormatter\\EspressorUI\\EspressorUI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ciprian\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JUxITmW4svYuE+Wq0fwrV+XTxAq4W7Nw6lxnf9BIJoy0+2NfnJf+VrGwELmyvU+V/ba8h1Q8oNoiXorSJy8yCA==",
+  "dgSpecHash": "hyJ9+bsCS5SqTYu0ujb0at8lFLUhNb6dL5/LynxbhFDBR+XxASknjsf+H1ErhQNVW05yqcZ1gidGHMmVIGgnkw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ciprian\\source\\repos\\EspressorUI\\EspressorUI\\EspressorUI.csproj",
+  "projectFilePath": "C:\\Users\\Ciprian\\source\\repos\\CodeFormatter\\EspressorUI\\EspressorUI\\EspressorUI.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
