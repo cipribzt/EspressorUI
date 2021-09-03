@@ -6,7 +6,7 @@ namespace EspressorUI
 {
     class Boiler
     {
-        public int waterLevel { get; set; }
-        public int waterTemperature { get; set; }
+        public int WaterLevel { get; set; }
+        public int WaterTemperature { get; set; }
     }
 }
